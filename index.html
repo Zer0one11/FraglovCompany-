@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход с паролем</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Введите пароль для доступа</h2>
+        <input type="password" id="passwordInput" placeholder="Введите пароль">
+        <button onclick="checkPassword()">Войти</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // Устанавливаем верный пароль
+            const correctPassword = "FraglovCompany";
+            
+            // Получаем введенный пользователем пароль
+            const enteredPassword = document.getElementById('passwordInput').value;
+            
+            // Элемент для вывода сообщений
+            const messageElement = document.getElementById('message');
+
+            if (enteredPassword === correctPassword) {
+                // Пароль верный
+                messageElement.textContent = "Успешный вход! Перенаправление...";
+                messageElement.style.color = "green";
+
+                // Перенаправление на основной экран
+                // Вам нужно создать файл main_screen.html
+                window.location.href = "main_screen.html"; 
+            } else {
+                // Пароль неверный
+                messageElement.textContent = "Неверный пароль. Попробуйте снова.";
+                messageElement.style.color = "red";
+                document.getElementById('passwordInput').value = ""; // Очистка поля
+            }
+        }
+    </script>
+</body>
+</html>
